@@ -1,0 +1,51 @@
+const transactionHistoryAxiosResponse: HarmonyGetTransactionHistoryData = {
+  jsonrpc: '2.0',
+  id: 1,
+  result: {
+    transactions: [
+      {
+        blockHash: '0x36039df946b0abfaa8b49f9c7b4a60f82a76958f22a00ae6aad5fa5d47f6d922',
+        blockNumber: 19327155,
+        ethHash: '0x69a097a66e1e6b93935e99dff2bf50566b4abc137a3c8fba08da33e2103a7399',
+        from: 'one12ptwf8lus7f63ar6ce5llhaccgmypadcxmyvnf',
+        gas: 79833,
+        gasPrice: 10000000000,
+        hash: '0xcaa2536290b78bb5edca15d8db06cc29c323532f78e1da1b2a5833e0bbf64258',
+        input:
+          '0xa59f3e0c000000000000000000000000000000000000000000000000058600624b30d939',
+        nonce: 57,
+        r: '0x6461ac46c3033db8028c6f752790eb80ec493c70239c988cea2b877dbe510ae9',
+        s: '0x37b8971a75547b6d51052f9d4a8d7b19d5c4df995645feeabd772cc9ed4f8436',
+        shardID: 0,
+        timestamp: 1636648986,
+        to: 'one1488gx5rasuk9uynnuaz6hn76sjw65e206pmljg',
+        toShardID: 0,
+        transactionIndex: 15,
+        v: '0xc6ac98a3',
+        value: 0,
+      },
+      {
+        blockHash: '0xc47a992c7c98eb5f4f24471b14758b3d21a922f3677e75f91796204c35a0ce28',
+        blockNumber: 18729210,
+        ethHash: '0xaea05f434a56c8c02e49a01ed445794a9a92d949d33d5984bcd975c5d64371cb',
+        from: 'one1e5g4tvr576883myesdnmf4aek3fvt6gj6qesuu',
+        gas: 50000,
+        gasPrice: 50000000000,
+        hash: '0xf1fa553b2993837fc1441d91a01a250e73b762906ec08744535a581034f1137e',
+        input: '0x',
+        nonce: 67902,
+        r: '0x47015f7c2c95673252b79799628407c716a59c84fcb051addb014874057229b9',
+        s: '0x65af8009abf33f4314482c45f487c309801921edc1aca1acfe8d21f2295ac33e',
+        shardID: 0,
+        timestamp: 1635296314,
+        to: 'one12ptwf8lus7f63ar6ce5llhaccgmypadcxmyvnf',
+        toShardID: 0,
+        transactionIndex: 0,
+        v: '0x25',
+        value: 59999000000000000000,
+      },
+    ],
+  },
+};
+
+export default transactionHistoryAxiosResponse;
