@@ -1,5 +1,7 @@
-import { transactionHistoryTransform } from '../axios-transformers/response-transformers';
+import responseTransforms from '../axios-transformers/response';
 import { HarmonyApiBaseType } from './harmony-api-base';
+
+const { transformTransactionHistoryResponse } = responseTransforms;
 
 /**
  * Define Harmony Transaction Api mixin that extends the Harmony Base class.
@@ -50,7 +52,9 @@ function HarmonyTransactionApi<TBase extends HarmonyApiBaseType>(Base: TBase) {
         await this._harmonyApi.request({
           method: 'POST',
           data: transactionHistoryRequestBody,
-          transformResponse: transactionHistoryTransform(pageSize),
+          transformResponse: (httpData: string) => {
+            return transformTransactionHistoryResponse(httpData, pageSize);
+          },
         });
 
       return transactionHistory.data;

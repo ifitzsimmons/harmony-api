@@ -1,5 +1,7 @@
-import { walletBalanceResponseTransform } from '../axios-transformers/response-transformers';
+import responseTransforms from '../axios-transformers/response';
 import { HarmonyApiBaseType } from './harmony-api-base';
+
+const { transformWalletBalanceResponse } = responseTransforms;
 
 /**
  * Define Harmony Wallet Api mixin that extends the Harmony Base class.
@@ -32,7 +34,7 @@ function HarmonyWalletApi<TBase extends HarmonyApiBaseType>(Base: TBase) {
       const walletBalance: AxiosWalletBalanceResponse = await this._harmonyApi.request({
         method: 'POST',
         data: getWalletBalanceRequest,
-        transformResponse: walletBalanceResponseTransform,
+        transformResponse: transformWalletBalanceResponse,
       });
 
       return walletBalance.data;

@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { checkForHarmonyError } from '../axios-transformers/error-handlers';
 
 /** Encoding for simple call methods */
 export enum HarmonySimpleCallMethod {
@@ -23,6 +24,8 @@ class HarmonyApiBase {
     this._harmonyApi = axios.create({
       baseURL: this._harmonyBaseUrl,
     });
+
+    this._harmonyApi.interceptors.response.use(checkForHarmonyError);
   }
 
   /**

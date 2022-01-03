@@ -9,3 +9,7 @@ type AxiosTransactionReceiptResponse = {
 type AxiosWalletBalanceResponse = {
   data: number;
 };
+
+type AxiosHarmonyError = {
+  data: HarmonyErrorResponse;
+};
