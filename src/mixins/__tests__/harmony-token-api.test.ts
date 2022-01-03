@@ -1,6 +1,7 @@
 import HarmonyApiBase, { HarmonySimpleCallMethod } from '../harmony-api-base';
 import HarmonyTokenApiMixin from '../harmony-token-api';
 import nock from 'nock';
+import HarmonyError from '../../errors/harmony-error';
 
 const HarmonyTokenApi = HarmonyTokenApiMixin(HarmonyApiBase);
 const harmonyTokenApi = new HarmonyTokenApi();
@@ -61,6 +62,29 @@ describe('Harmony Token Wrapper', () => {
         expect(e.message).toEqual('Invalid token address');
       }
     });
+
+    test('raises error http error', async () => {
+      expect.assertions(3);
+
+      nock('https://api.harmony.one')
+        .post('/', requestParams)
+        .reply(200, {
+          jsonrpc: '2.0',
+          id: 1,
+          error: {
+            code: -32000,
+            message: 'invalid address: invalidAddress',
+          },
+        });
+
+      try {
+        await harmonyTokenApi.getTokenName(xJewelToken);
+      } catch (e) {
+        expect(e.message).toEqual('invalid address: invalidAddress');
+        expect(e.statusCode).toBe(-32000);
+        expect(e).toBeInstanceOf(HarmonyError);
+      }
+    });
   });
 
   describe('getTokenDecimal', () => {
@@ -100,8 +124,28 @@ describe('Harmony Token Wrapper', () => {
       expect(axiosResponse).toEqual(0);
     });
 
-    // Harmony returns 200 response even if error
-    test.todo('Test error wrapping');
+    test('raises error http error', async () => {
+      expect.assertions(3);
+
+      nock('https://api.harmony.one')
+        .post('/', requestParams)
+        .reply(200, {
+          jsonrpc: '2.0',
+          id: 1,
+          error: {
+            code: -32000,
+            message: 'invalid address: invalidAddress',
+          },
+        });
+
+      try {
+        await harmonyTokenApi.getTokenDecimal(xJewelToken);
+      } catch (e) {
+        expect(e.message).toEqual('invalid address: invalidAddress');
+        expect(e.statusCode).toBe(-32000);
+        expect(e).toBeInstanceOf(HarmonyError);
+      }
+    });
   });
 
   describe('getTokenSymbol', () => {
@@ -158,7 +202,27 @@ describe('Harmony Token Wrapper', () => {
       }
     });
 
-    // Harmony returns 200 response even if error
-    test.todo('Test error wrapping');
+    test('raises error http error', async () => {
+      expect.assertions(3);
+
+      nock('https://api.harmony.one')
+        .post('/', requestParams)
+        .reply(200, {
+          jsonrpc: '2.0',
+          id: 1,
+          error: {
+            code: -32000,
+            message: 'invalid address: invalidAddress',
+          },
+        });
+
+      try {
+        await harmonyTokenApi.getTokenSymbol(xJewelToken);
+      } catch (e) {
+        expect(e.message).toEqual('invalid address: invalidAddress');
+        expect(e.statusCode).toBe(-32000);
+        expect(e).toBeInstanceOf(HarmonyError);
+      }
+    });
   });
 });

@@ -1,8 +1,8 @@
 import { HarmonyApiBaseType, HarmonySimpleCallMethod } from './harmony-api-base';
-import {
-  parseTokenDecimal,
-  parseTokenName,
-} from '../axios-transformers/response-transformers';
+import responseTransforms from '../axios-transformers/response';
+
+const { transformTokenDecimalResponse, transformTokenNameResponse } =
+  responseTransforms;
 
 /**
  * Define Harmony Token Api mixin that extends the Harmony Base class.
@@ -86,7 +86,7 @@ function HarmonyTokenApiMixin<TBase extends HarmonyApiBaseType>(Base: TBase) {
       const tokenSymbolResponse = await this._harmonyApi.request({
         method: 'POST',
         data: request,
-        transformResponse: parseTokenDecimal,
+        transformResponse: transformTokenDecimalResponse,
       });
 
       return tokenSymbolResponse.data;
@@ -105,7 +105,7 @@ function HarmonyTokenApiMixin<TBase extends HarmonyApiBaseType>(Base: TBase) {
       const tokenSymbolResponse = await this._harmonyApi.request({
         method: 'POST',
         data: request,
-        transformResponse: parseTokenName,
+        transformResponse: transformTokenNameResponse,
       });
 
       return tokenSymbolResponse.data;

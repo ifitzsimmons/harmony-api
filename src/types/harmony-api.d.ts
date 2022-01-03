@@ -11,6 +11,15 @@ interface HarmonyRequest {
   id: 1;
 }
 
+type HarmonyErrorResponse = {
+  jsonrpc: '2.0';
+  id: 1;
+  error: {
+    code: number;
+    message: string;
+  };
+};
+
 interface HarmonySimpleCallRequest extends HarmonyRequest {
   method: 'hmyv2_call';
   params: [{ to: string; data: string }, 'latest'];

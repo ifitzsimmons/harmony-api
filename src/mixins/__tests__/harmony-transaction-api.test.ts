@@ -5,6 +5,7 @@ import HarmonyTransactionMixin from '../harmony-transaction-api';
 
 import harmonyTransactionsAxiosResponse from './__data__/transactionHistory';
 import harmonyTransactionReceiptHttpResponse from './__data__/transactionReceipt';
+import HarmonyError from '../../errors/harmony-error';
 
 const HarmonyTransactionApi = HarmonyTransactionMixin(HarmonyApiBase);
 const harmonyTxnApi = new HarmonyTransactionApi();
@@ -125,8 +126,30 @@ describe('Harmony Transaction Wrapper', () => {
       }
     });
 
-    // Harmony returns 200 response even if error
-    test.todo('Test error wrapping');
+    test('raises error http error', async () => {
+      expect.assertions(3);
+
+      baseRequest.params.push(baseParams);
+
+      nock('https://api.harmony.one')
+        .post('/', baseRequest)
+        .reply(200, {
+          jsonrpc: '2.0',
+          id: 1,
+          error: {
+            code: -32602,
+            message: 'invalid address: invalidAddress',
+          },
+        });
+
+      try {
+        await harmonyTxnApi.getTransactionHistory(walletId);
+      } catch (e) {
+        expect(e.message).toEqual('invalid address: invalidAddress');
+        expect(e.statusCode).toBe(-32602);
+        expect(e).toBeInstanceOf(HarmonyError);
+      }
+    });
   });
 
   describe('getTransactionReceipt', () => {
@@ -150,7 +173,27 @@ describe('Harmony Transaction Wrapper', () => {
       expect(axiosResponse).toEqual(harmonyTransactionReceiptHttpResponse.result);
     });
 
-    // Harmony returns 200 response even if error
-    test.todo('Test error wrapping');
+    test('raises error http error', async () => {
+      expect.assertions(3);
+
+      nock('https://api.harmony.one')
+        .post('/', request)
+        .reply(200, {
+          jsonrpc: '2.0',
+          id: 1,
+          error: {
+            code: -32602,
+            message: 'too many arguments, want at most 1',
+          },
+        });
+
+      try {
+        await harmonyTxnApi.getTransactionReceipt(transactionHash);
+      } catch (e) {
+        expect(e.message).toEqual('too many arguments, want at most 1');
+        expect(e.statusCode).toBe(-32602);
+        expect(e).toBeInstanceOf(HarmonyError);
+      }
+    });
   });
 });
