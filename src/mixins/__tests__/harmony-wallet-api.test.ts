@@ -9,7 +9,7 @@ const harmonyWalletApi = new HarmonyWalletApi();
 
 describe('Harmony Wallet Wrapper', () => {
   describe('getBalance', () => {
-    const walletId = 'one12ptwf8lus7f63ar6ce5llhaccgmypadcxmyvnf';
+    const walletId = 'one12ptaf8lus7f63ar6ce5llhaccgmypadcxmyvnf';
     const request = {
       jsonrpc: '2.0',
       method: 'hmyv2_getBalance',

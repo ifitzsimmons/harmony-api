@@ -1,5 +1,7 @@
 import { checkForHarmonyErrorWrapper } from '../error-handlers';
 
+const REMOVE_KEYS = ['blockHash', 'blockNumber', 'r', 's', 'transactionIndex', 'v'];
+
 /**
  * The transaction history api does not include an indication of whether
  * the response should be paginated or not. This function returns pagination
@@ -36,6 +38,12 @@ const transactionHistoryTransform = (
   if (transactions.length === pageLimit) {
     transactionHistoryResponse.pagination = true;
   }
+
+  transactionHistoryResponse.transactions.forEach((transaction: HarmonyTransaction) => {
+    REMOVE_KEYS.forEach((key) => {
+      delete transaction[key];
+    });
+  });
 
   return transactionHistoryResponse;
 };

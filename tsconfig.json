@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
+    "downlevelIteration": true,
     "preserveConstEnums": true,
     "esModuleInterop": true,
     "strictNullChecks": true,
