@@ -8,7 +8,10 @@ import {
   GetTransactionReceiptRequest,
 } from '../models/harmony-api';
 import { HarmonyTransactionReceipt } from '../models/harmony-api.transaction';
-import { SubTransaction, TransactionTopic } from '../models/harmony-api.sub-transactions';
+import {
+  SubTransaction,
+  TransactionTopic,
+} from '../models/harmony-api.sub-transactions';
 import { TokenAddress } from '../models/token';
 import {
   HarmonyTransactionHistory,
