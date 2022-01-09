@@ -5,7 +5,7 @@
   "author": "Ian Fitzsimmons",
   "license": "MIT",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "types": "dist-types/index.d.ts",
   "files": [
     "dist",
     "README.md"
@@ -35,16 +35,20 @@
     "nock": "^13.2.1",
     "prettier": "^2.5.1",
     "ts-jest": "26.4.4",
+    "typedoc": "^0.22.10",
     "typescript": "^4.5.4"
   },
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build": "yarn clean && tsc --build tsconfig.json",
+    "build": "yarn build:cjs && yarn build:types",
+    "build:cjs": "tsc -p tsconfig.json",
+    "build:docs": "typedoc",
+    "build:types": "tsc -p tsconfig.types.json",
     "lint": "eslint .",
     "lint:fix": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
     "postinstall": "husky install",
     "prepare": "yarn build",
-    "prepublishOnly" : "yarn test && yarn lint",
+    "prepublishOnly": "yarn test && yarn lint",
     "test": "jest",
     "test-all": "yarn lint && yarn test",
     "test-cov": "yarn test --coverage",

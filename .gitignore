@@ -4,4 +4,8 @@ integrationTests
 yarn-error.log
 /dist
 coverage
+/dist-*
+*.tsbuildinfo
 *.tgz
+*.log
+docs-test
