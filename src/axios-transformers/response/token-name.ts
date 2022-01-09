@@ -1,4 +1,5 @@
 import { HEX_PREFIX, HEX_ZERO } from '../../constants/constants';
+import { HarmonySimpleCallResponse } from '../../models/harmony-api';
 import { hexToUtf8, removeUnicodeCharacters } from '../../utils/bech32-coding';
 import { checkForHarmonyErrorWrapper } from '../error-handlers';
 

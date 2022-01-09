@@ -1,3 +1,8 @@
+import {
+  HarmonyGetTransactionHistoryData,
+  HarmonyGetTransactionHistoryDataTransform,
+  HarmonyTransaction,
+} from '../../models/harmony-api.transaction';
 import { checkForHarmonyErrorWrapper } from '../error-handlers';
 
 const REMOVE_KEYS = ['blockHash', 'blockNumber', 'r', 's', 'transactionIndex', 'v'];

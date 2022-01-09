@@ -1,3 +1,5 @@
+import { HarmonyTransactionReceipt } from '../../../../models/harmony-api.transaction';
+
 const transactionDetail: HarmonyTransactionReceipt = {
   blockHash: '0x36039df946b0abfaa8b49f9c7b4a60f82a76958f22a00ae6aad5fa5d47f6d922',
   blockNumber: 19327155,

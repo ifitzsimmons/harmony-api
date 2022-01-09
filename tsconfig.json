@@ -4,7 +4,6 @@
     "target": "ES2018",
     "module": "commonjs",
     "noEmitHelpers": true,
-    "incremental": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "rootDir": "src",
@@ -12,8 +11,8 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "allowJs": true,
-    "outDir": "dist",
+    "outDir": "dist-cjs",
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/__tests__"]
+  "exclude": ["node_modules", "dist-cjs", "**/__tests__"]
 }

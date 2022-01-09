@@ -1,3 +1,5 @@
+import { HarmonyResponse } from './harmony-api';
+
 interface HarmonyTransactionCommon {
   /** Hash of the block where the transaction occured. Null if pending */
   blockHash?: string;
@@ -14,7 +16,7 @@ interface HarmonyTransactionCommon {
   to: string;
 }
 
-interface HarmonyTransaction extends HarmonyTransactionCommon {
+export interface HarmonyTransaction extends HarmonyTransactionCommon {
   ethHash: string;
 
   /** Gas provided by the sender */
@@ -70,7 +72,7 @@ interface HarmonyTransactionLog {
   transactionHash: string;
 }
 
-interface HarmonyTransactionReceipt extends HarmonyTransactionCommon {
+export interface HarmonyTransactionReceipt extends HarmonyTransactionCommon {
   contractAddress: string;
 
   /** Total amount of gas used when transaction was executed in Block */
@@ -83,17 +85,27 @@ interface HarmonyTransactionReceipt extends HarmonyTransactionCommon {
   transactionHash: string;
 }
 
-interface HarmonyGetTransactionHistoryData extends HarmonyResponse {
+export interface HarmonyGetTransactionHistoryData extends HarmonyResponse {
   result: {
     transactions: HarmonyTransaction[];
   };
 }
 
-interface HarmonyGetTransactionReceiptData extends HarmonyResponse {
+export interface HarmonyGetTransactionReceiptData extends HarmonyResponse {
   result: HarmonyTransactionReceipt;
 }
 
-interface HarmonyGetTransactionHistoryDataTransform {
+export interface HarmonyGetTransactionHistoryDataTransform {
   transactions: HarmonyTransaction[];
   pagination: boolean;
+}
+
+export interface HarmonyGetTransactionHistoryData extends HarmonyResponse {
+  result: {
+    transactions: HarmonyTransaction[];
+  };
+}
+
+export interface HarmonyGetTransactionReceiptData extends HarmonyResponse {
+  result: HarmonyTransactionReceipt;
 }

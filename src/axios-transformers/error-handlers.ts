@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
 import HarmonyError from '../errors/harmony-error';
+import { HarmonyErrorResponse } from '../models/harmony-api';
 
 /**
  * This checks the Harmony API response for the error property and throws an error.
