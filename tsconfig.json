@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "downlevelIteration": true,
-    "preserveConstEnums": true,
+    "alwaysStrict": true,
+    "target": "ES2018",
+    "module": "commonjs",
+    "noEmitHelpers": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
+    "rootDir": "src",
+    "removeComments": true,
     "strictNullChecks": true,
     "sourceMap": true,
     "allowJs": true,
-    "target": "es5",
-    "outDir": "dist",
-    "moduleResolution": "node",
-    "module": "commonjs",
-    "lib": ["es2015"],
-    "rootDir": "./src",
+    "outDir": "dist-cjs",
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist", "**/__tests__"]
+  "exclude": ["node_modules", "dist-cjs", "**/__tests__"]
 }

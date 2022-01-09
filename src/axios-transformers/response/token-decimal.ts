@@ -1,4 +1,8 @@
 import { HEX_ZERO } from '../../constants/constants';
+import {
+  HarmonySimpleCallResponse,
+  HarmonyTokenDecimalResponse,
+} from '../../models/harmony-api';
 import { checkForHarmonyErrorWrapper } from './../error-handlers';
 
 /**

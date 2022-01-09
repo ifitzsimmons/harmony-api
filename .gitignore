@@ -2,6 +2,10 @@ node_modules
 integrationTests
 .DS_Store
 yarn-error.log
-/dist
 coverage
+/dist-*
+*.tsbuildinfo
 *.tgz
+*.log
+docs-test
+.husky

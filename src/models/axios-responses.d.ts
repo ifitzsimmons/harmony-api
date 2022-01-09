@@ -1,3 +1,7 @@
+import { HarmonyErrorResponse } from './harmony-api';
+import { HarmonyGetTransactionReceiptData } from './harmony-api.transaction';
+import { HarmonyTransactionHistory } from './wrapped-harmony-transactions';
+
 type AxiosTransactionHistoryResponse = {
   data: HarmonyTransactionHistory;
 };

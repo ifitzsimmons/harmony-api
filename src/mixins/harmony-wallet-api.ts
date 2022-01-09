@@ -1,4 +1,6 @@
 import responseTransforms from '../axios-transformers/response';
+import { AxiosWalletBalanceResponse } from '../models/axios-responses';
+import { GetWalletBalanceRequest } from '../models/harmony-api.wallet';
 import { HarmonyApiBaseType } from './harmony-api-base';
 
 const { transformWalletBalanceResponse } = responseTransforms;

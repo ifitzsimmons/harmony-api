@@ -1,3 +1,12 @@
+export {
+  HarmonyTransaction,
+  HarmonyTransactionReceipt,
+} from './models/harmony-api.transaction';
+export {
+  WrappedTransasctionReceipt,
+  HarmonyTransactionHistory,
+} from './models/wrapped-harmony-transactions';
+
 import HarmonyApiBase from './mixins/harmony-api-base';
 import HarmonyTransactionApi from './mixins/harmony-transaction-api';
 import HarmonyWalletApi from './mixins/harmony-wallet-api';
@@ -8,7 +17,4 @@ import HarmonyWalletApi from './mixins/harmony-wallet-api';
  * HarmonyApiBase base class. This gives us the ability to have one class
  * for all Harmony operations while organizing them in different classes logically.
  */
-const HarmonyApi = HarmonyTransactionApi(HarmonyWalletApi(HarmonyApiBase));
-
-// Harmony Api is a class in this case
-export default HarmonyApi;
+export default HarmonyTransactionApi(HarmonyWalletApi(HarmonyApiBase));

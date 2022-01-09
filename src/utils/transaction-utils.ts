@@ -1,3 +1,12 @@
+import {
+  DualPartyTransaction,
+  DualPartyTransactionType,
+  RawTransactionType,
+  SinglePartyTransaction,
+  SinglePartyTransactionType,
+  TransactionSimple,
+  TransactionTopic,
+} from '../models/harmony-api.sub-transactions';
 import { ethToOne, isHexAddress, isOneAddress, oneToEth } from './address-utils';
 
 /**

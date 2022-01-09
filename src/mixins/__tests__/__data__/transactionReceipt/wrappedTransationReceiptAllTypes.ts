@@ -1,3 +1,5 @@
+import { WrappedTransasctionReceipt } from '../../../../models/wrapped-harmony-transactions';
+
 const wrappedReceipt: WrappedTransasctionReceipt = {
   contractAddress: '0x0000000000000000000000000000000000000000',
   cumulativeGasUsed: 712891,

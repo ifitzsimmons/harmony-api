@@ -1,6 +1,12 @@
 import axios, { AxiosInstance } from 'axios';
 import { checkForHarmonyError } from '../axios-transformers/error-handlers';
 import responseTransforms from '../axios-transformers/response';
+import {
+  HarmonySimpleCallRequest,
+  HarmonySimpleCallResponse,
+  HarmonyTokenDecimalResponse,
+} from '../models/harmony-api';
+import { TokenAddress, TokenData, TokenMap } from '../models/token';
 
 const { transformTokenDecimalResponse, transformTokenNameResponse } =
   responseTransforms;
