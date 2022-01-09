@@ -31,7 +31,7 @@ function HarmonyWalletApi<TBase extends HarmonyApiBaseType>(Base: TBase) {
         id: 1,
       };
 
-      const walletBalance: AxiosWalletBalanceResponse = await this._harmonyApi.request({
+      const walletBalance: AxiosWalletBalanceResponse = await this.harmonyApi.request({
         method: 'POST',
         data: getWalletBalanceRequest,
         transformResponse: transformWalletBalanceResponse,

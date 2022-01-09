@@ -12,9 +12,6 @@ interface HarmonyTransactionCommon {
 
   /** To address */
   to: string;
-
-  /** Transaction index in the block */
-  transactionIndex: number;
 }
 
 interface HarmonyTransaction extends HarmonyTransactionCommon {
@@ -33,15 +30,11 @@ interface HarmonyTransaction extends HarmonyTransactionCommon {
   input: string;
 
   nonce: number;
-  r: string;
-  s: string;
 
   /** Epoch Seconds */
   timestamp: number;
 
   toShardID: number;
-
-  v: string;
 
   /** Value transferred in ATTO */
   value: number;
@@ -50,9 +43,9 @@ interface HarmonyTransaction extends HarmonyTransactionCommon {
 interface HarmonyTransactionLog {
   /** Address from which log originated (20 Bytes) */
   address: string;
-  /** Hash of the block where the transaction occured. Null if pending */
+  /** Hex encoded Hash of the block where the transaction occured. Null if pending */
   blockHash: string;
-  /** Number of the block where the transaction occured. Null if pending */
+  /** Hex encoded Number of the block where the transaction occured. Null if pending */
   blockNumber: string;
 
   /** Non-indexed arguments of the log */
@@ -73,6 +66,7 @@ interface HarmonyTransactionLog {
 
   /** Transaction index in the block */
   transactionIndex: string;
+
   transactionHash: string;
 }
 
@@ -84,8 +78,6 @@ interface HarmonyTransactionReceipt extends HarmonyTransactionCommon {
   /** Gas used by this specific transaction alone */
   gasUsed: number;
   logs: HarmonyTransactionLog[];
-  logsBloom: string;
-  root: string;
   status: number;
 
   transactionHash: string;

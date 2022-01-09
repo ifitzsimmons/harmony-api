@@ -24,6 +24,6 @@ describe('Test HarmonyApiBase class', () => {
   });
 
   test('Harmony base URL is shard 0 URL', () => {
-    expect(harmonyBase._harmonyBaseUrl).toBe('https://api.harmony.one/');
+    expect(harmonyBase.harmonyBaseUrl).toBe('https://api.harmony.one/');
   });
 });

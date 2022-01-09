@@ -4,3 +4,4 @@ integrationTests
 yarn-error.log
 /dist
 coverage
+*.tgz

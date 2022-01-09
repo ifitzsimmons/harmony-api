@@ -1,10 +1,8 @@
 import HarmonyApiBase, { HarmonySimpleCallMethod } from '../harmony-api-base';
-import HarmonyTokenApiMixin from '../harmony-token-api';
 import nock from 'nock';
 import HarmonyError from '../../errors/harmony-error';
 
-const HarmonyTokenApi = HarmonyTokenApiMixin(HarmonyApiBase);
-const harmonyTokenApi = new HarmonyTokenApi();
+const harmonyTokenApi = new HarmonyApiBase();
 
 const xJewelToken = '0xa9ce83507d872c5e1273e745abcfda849daa654f';
 

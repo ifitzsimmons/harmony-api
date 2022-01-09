@@ -4,8 +4,11 @@ import nock from 'nock';
 import HarmonyTransactionMixin from '../harmony-transaction-api';
 
 import harmonyTransactionsAxiosResponse from './__data__/transactionHistory';
-import harmonyTransactionReceiptHttpResponse from './__data__/transactionReceipt';
+import harmonyWrapperTransactionHistoryReponse from './__data__/expectedWrappedTransactionHistory';
 import HarmonyError from '../../errors/harmony-error';
+
+// Nock mock functions
+import { mockTransactionHistory } from './__utils__/nock/transaction-endpoints';
 
 const HarmonyTransactionApi = HarmonyTransactionMixin(HarmonyApiBase);
 const harmonyTxnApi = new HarmonyTransactionApi();
@@ -45,7 +48,7 @@ describe('Harmony Transaction Wrapper', () => {
       const axiosResponse = await harmonyTxnApi.getTransactionHistory(walletId);
 
       expect(axiosResponse).toEqual({
-        transactions: harmonyTransactionsAxiosResponse.result.transactions,
+        transactions: harmonyWrapperTransactionHistoryReponse,
         pagination: false,
       });
     });
@@ -67,7 +70,7 @@ describe('Harmony Transaction Wrapper', () => {
       );
 
       expect(axiosResponse).toEqual({
-        transactions: harmonyTransactionsAxiosResponse.result.transactions,
+        transactions: harmonyWrapperTransactionHistoryReponse,
         pagination: true,
       });
     });
@@ -76,10 +79,7 @@ describe('Harmony Transaction Wrapper', () => {
       expect.assertions(2);
 
       baseRequest.params.push(baseParams);
-
-      nock('https://api.harmony.one')
-        .post('/', baseRequest)
-        .reply(200, { result: { transaction: [] } });
+      mockTransactionHistory(baseRequest, 200, { result: { transaction: [] } });
 
       try {
         await harmonyTxnApi.getTransactionHistory(walletId);
@@ -95,10 +95,9 @@ describe('Harmony Transaction Wrapper', () => {
       expect.assertions(2);
 
       baseRequest.params.push(baseParams);
-
-      nock('https://api.harmony.one')
-        .post('/', baseRequest)
-        .reply(200, { result: { transactions: { singular: 'transaction' } } });
+      mockTransactionHistory(baseRequest, 200, {
+        result: { transactions: { singular: 'transaction' } },
+      });
 
       try {
         await harmonyTxnApi.getTransactionHistory(walletId);
@@ -146,51 +145,6 @@ describe('Harmony Transaction Wrapper', () => {
         await harmonyTxnApi.getTransactionHistory(walletId);
       } catch (e) {
         expect(e.message).toEqual('invalid address: invalidAddress');
-        expect(e.statusCode).toBe(-32602);
-        expect(e).toBeInstanceOf(HarmonyError);
-      }
-    });
-  });
-
-  describe('getTransactionReceipt', () => {
-    const transactionHash =
-      '0xcaa2536290b78bb5edca15d8db06cc29c323532f78e1da1b2a5833e0bbf64258';
-    const request = {
-      jsonrpc: '2.0',
-      method: 'hmyv2_getTransactionReceipt',
-      params: [transactionHash],
-      id: 1,
-    };
-
-    test('Returns transformed transactions without pagination', async () => {
-      expect.assertions(1);
-
-      nock('https://api.harmony.one')
-        .post('/', request)
-        .reply(200, harmonyTransactionReceiptHttpResponse);
-      const axiosResponse = await harmonyTxnApi.getTransactionReceipt(transactionHash);
-
-      expect(axiosResponse).toEqual(harmonyTransactionReceiptHttpResponse.result);
-    });
-
-    test('raises error http error', async () => {
-      expect.assertions(3);
-
-      nock('https://api.harmony.one')
-        .post('/', request)
-        .reply(200, {
-          jsonrpc: '2.0',
-          id: 1,
-          error: {
-            code: -32602,
-            message: 'too many arguments, want at most 1',
-          },
-        });
-
-      try {
-        await harmonyTxnApi.getTransactionReceipt(transactionHash);
-      } catch (e) {
-        expect(e.message).toEqual('too many arguments, want at most 1');
         expect(e.statusCode).toBe(-32602);
         expect(e).toBeInstanceOf(HarmonyError);
       }

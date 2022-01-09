@@ -2,7 +2,7 @@
 module.exports = {
   // preset: 'ts-jest',
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['__data__'],
+  testPathIgnorePatterns: ['__data__', '__utils__'],
   collectCoverageFrom: [
     '<rootDir>/src/**/*',
     '!<rootDir>/src/**/constants',

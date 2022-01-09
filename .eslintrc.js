@@ -19,7 +19,7 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'require-jsdoc': 'warn',
+    'require-jsdoc': 'error',
     'comma-dangle': 'off',
   },
 };
