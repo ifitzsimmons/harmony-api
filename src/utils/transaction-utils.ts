@@ -104,3 +104,7 @@ export const getTransactionTopicData: Record<
   '0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef':
     dualPartyTransaction('TRANSFER'),
 };
+
+// 0x4c209b5fc8ad50758f13e2e1088ba56a560dff690a1c6fef26394f4c03821c4f (MINT)
+// 0x90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15 (DEPOSIT with 3 topics)
+// unknown 0xf788ddcf049c68fb8985def3d20b138fa7d35c9c425361154eda070412ddcc7c
