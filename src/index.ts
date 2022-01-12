@@ -17,4 +17,4 @@ import HarmonyWalletApi from './mixins/harmony-wallet-api';
  * HarmonyApiBase base class. This gives us the ability to have one class
  * for all Harmony operations while organizing them in different classes logically.
  */
-export default HarmonyTransactionApi(HarmonyWalletApi(HarmonyApiBase));
+export const HarmonyApi = HarmonyTransactionApi(HarmonyWalletApi(HarmonyApiBase));

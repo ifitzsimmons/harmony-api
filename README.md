@@ -1,29 +1,3 @@
-## To Do
-1. More robust address utils/bech32 encoding. Find documentation for parsing data.
-1. Fix husky
-1. Add contributions file
-1. Add pre-push script that will run tests
-1. Add pipeline that will distribute package and test.
-1. Build distribution package for ts and js
-1. Auto API Doc creation (typedoc)
-1. Figure out why I had to use babel and old versions of jest/ts-jest in order to run tests. This can be open sourced.
-1. Force all response transform functions to be wrapped by error handler
-1. Make page size readonly as to not mess with pagination, add a max.
-1. Better named exports for response transformers
-1. Enfore JSdocs are up-to-date with params
-1. Transform transaction value from ATTO to ONE
-    * transform `from` and `to` to `fromOneAddress` and `toOneAddress` and ensure they are ONE addresses
-    * Make `ethHash`, `nonce`, `shardId`, and `toShardId` optional return values (add an arg)
-1. Transform hex encoded numeric values in receipt
-    * blockHash
-    * blockNumber
-    * transactionIndex
-1. Implement optional logger
-1. Cover missing test coverage
-1. Add API docs
-1. Add table of contents
-1. Clean up type definitions in package
-
 # Harmony API Wrapper
 
 ## Quick Links
@@ -67,7 +41,7 @@ npm install -D @types/node
 
 After installing the package, you can add the following code to your file to use the Harmony API wrapper:
 ```typescript
-import HarmonyApi from 'harmony-api';
+import { HarmonyApi } from 'harmony-api';
 
 const harmonyApi = new HarmonyApi();
 
@@ -420,4 +394,31 @@ console.log(wrappedReceipts);
 ## Error Handling
 ToDo
 
-
+## To Do
+1. Combine relevant fields from trnasaction history (transfer fee) and others with wrapped receipt
+1. Reorganize pagination for transaction history
+1. optimize token settings
+1. More robust address utils/bech32 encoding. Find documentation for parsing data.
+1. Fix husky
+1. Add contributions file
+1. Add pre-push script that will run tests
+1. Add pipeline that will distribute package and test.
+1. Build distribution package for ts and js
+1. Auto API Doc creation (typedoc)
+1. Figure out why I had to use babel and old versions of jest/ts-jest in order to run tests. This can be open sourced.
+1. Force all response transform functions to be wrapped by error handler
+1. Make page size readonly as to not mess with pagination, add a max.
+1. Better named exports for response transformers
+1. Enfore JSdocs are up-to-date with params
+1. Transform transaction value from ATTO to ONE
+    * transform `from` and `to` to `fromOneAddress` and `toOneAddress` and ensure they are ONE addresses
+    * Make `ethHash`, `nonce`, `shardId`, and `toShardId` optional return values (add an arg)
+1. Transform hex encoded numeric values in receipt
+    * blockHash
+    * blockNumber
+    * transactionIndex
+1. Implement optional logger
+1. Cover missing test coverage
+1. Add API docs
+1. Add table of contents
+1. Clean up type definitions in package

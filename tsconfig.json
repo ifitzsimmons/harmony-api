@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "alwaysStrict": true,
-    "target": "ES2018",
+    "target": "es2018",
     "module": "commonjs",
-    "noEmitHelpers": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "rootDir": "src",
@@ -12,6 +11,7 @@
     "sourceMap": true,
     "allowJs": true,
     "outDir": "dist-cjs",
+    "lib": ["ES2015"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist-cjs", "**/__tests__"]
